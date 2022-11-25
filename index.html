@@ -8,13 +8,19 @@
     <link rel="stylesheet" href="./reset-meyer.css">
     <link rel="stylesheet" href="style.css">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
     <script defer src="script.js"></script>
     <title>Snake Game</title>
 </head>
 <body>
-    <h1>Snake Game</h1>
+    <h1 id="title">Snake Game</h1>
     <button id="start">Iniciar game</button>
-    <main><canvas id="snake" width="512" height="512"></canvas></main>
+    <main><canvas hidden="hidden" id="snake" width="512" height="512"></canvas></main>
+    
+    <button id="restart" class="hidden"> Restart </button>
     
 </body>
 </html>

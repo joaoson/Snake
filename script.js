@@ -1,4 +1,5 @@
 let canvas = document.getElementById('snake');
+let restart = document.getElementById('restart')
 let context = canvas.getContext("2d");
 let square = 32;
 let snake= [];
@@ -47,15 +48,20 @@ function startGame(){
     if(snake[0].y > 15 * square && direction == 'down') snake[0].y = 0;
     if(snake[0].y < 0 && direction == 'up') snake[0].y = 16 * square;
 
+    if(snake[0].x > 15 * square && (direction == 'up' || direction == 'down')) direction == 'right';
+    if(snake[0].x < 0  && (direction == 'up' || direction == 'down')) direction == 'left';
+
     for(i=1;i < snake.length;i++){
         if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
-            clearInterval(jogo)
+            gameOver();
         }
     }
 
     createBg();
     createSnake();
     createFood();
+
+    console.log(snake.length)
 
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
@@ -72,8 +78,6 @@ function startGame(){
         food.y = Math.floor(Math.random() *15 + 1) * square;
     }
 
-    
-
     let newhead = {
         x: snakeX,
         y: snakeY
@@ -86,10 +90,31 @@ function startGame(){
 let iniciar = document.getElementById('start')
 iniciar.addEventListener('click',iniciarJogo)
 
+restart.addEventListener('click',iniciarJogo)
+
+let jogo = '';
+let title = document.getElementById('title')
+
 function iniciarJogo(event){
-    let jogo = setInterval(startGame,100);
+    title.classList.add('ingame');
+    canvas.removeAttribute("hidden");
+    jogo = setInterval(startGame,100);
     iniciar.classList.add('hidden')
+    restart.classList.add('hidden');
 }
+
+function gameOver(){
+    title.classList.remove('ingame');
+    tamanho= snake.length
+    for(i=tamanho;i>1;i--){
+       snake.pop() 
+    }
+    direction = '';
+    canvas.setAttribute("hidden", "hidden");
+    restart.classList.remove('hidden');
+    clearInterval(jogo);
+}
+
 
 
 
