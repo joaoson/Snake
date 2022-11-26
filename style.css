@@ -23,3 +23,13 @@ h1{
 .ingame{
     font-size: 3rem !important; 
 }
+
+button{
+    border: 2px solid #1f426d;
+    background-color: azure;
+    font-size: 1rem;
+    padding: 1rem;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 2rem;
+    cursor: pointer;
+}

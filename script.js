@@ -48,9 +48,6 @@ function startGame(){
     if(snake[0].y > 15 * square && direction == 'down') snake[0].y = 0;
     if(snake[0].y < 0 && direction == 'up') snake[0].y = 16 * square;
 
-    if(snake[0].x > 15 * square && (direction == 'up' || direction == 'down')) direction == 'right';
-    if(snake[0].x < 0  && (direction == 'up' || direction == 'down')) direction == 'left';
-
     for(i=1;i < snake.length;i++){
         if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
             gameOver();
@@ -98,7 +95,7 @@ let title = document.getElementById('title')
 function iniciarJogo(event){
     title.classList.add('ingame');
     canvas.removeAttribute("hidden");
-    jogo = setInterval(startGame,100);
+    jogo = setInterval(startGame,80);
     iniciar.classList.add('hidden')
     restart.classList.add('hidden');
 }
